@@ -10,6 +10,8 @@
       ./hardware-configuration.nix
     ];
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # Bootloader.
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
@@ -117,6 +119,8 @@
   #   enableSSHSupport = true;
   # };
 
+  nix.settings.trusted-users = [ "root" "@wheel" "deepwatrcreatur" ];  # Allow deepwatrcreatur to build
+
   # List services that you want to enable:
   services.nix-serve = {
     enable = true;
@@ -132,7 +136,6 @@
     };
   };
   
-
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
