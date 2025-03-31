@@ -100,6 +100,7 @@
   wget
   curl  
   iperf3
+  netdata
   git
   gh
   htop
@@ -130,6 +131,7 @@
   services.nix-serve = {
     enable = true;
     port = 5000;
+    #secretKeyFile = "/var/secrets/cache-private-key.pem"; # Path to your private key
     secretKeyFile = "/var/lib/nix-serve/secret-key";
   };
 
@@ -143,6 +145,7 @@
   
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  services.netdata.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
