@@ -120,12 +120,17 @@
   # };
 
   nix.settings.trusted-users = [ "root" "@wheel" "deepwatrcreatur" ];  # Allow deepwatrcreatur to build
+  nix = {
+    settings = {
+      secret-key-files = "/var/lib/nix-serve/secret-key";
+    };
+  };
 
   # List services that you want to enable:
   services.nix-serve = {
     enable = true;
     port = 5000;
-    secretKeyFile = "/var/secrets/cache-private-key.pem"; # Path to your private key
+    secretKeyFile = "/var/lib/nix-serve/secret-key";
   };
 
   services.nginx = {
